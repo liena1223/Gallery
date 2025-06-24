@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="main.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="logo.svg" alt="ImageFinder Logo">
+            </div>
+            <div class="header-title">
+                Gallery
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>Let's Find Some <span class="orange">Images</span> Here!</h1>
+        <form id="searchForm" class="search-form">
+            <input type="text" id="searchInput" placeholder="Search High Resolution Images" class="search-input" />
+            <button type="submit" class="search-button">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 30 30">
+                    <path
+                        d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z">
+                    </path>
+                </svg>
+            </button>
+        </form>
+        <p id="errorMessage" class="error-message"></p>
+
+        <div class="gallery" id="gallery"></div>
+        <!-- Modal -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <img id="modalImage" src="" alt="">
+                <div class="modal-info">
+                    <span id="modalTitle"></span>
+                    <div class="modal-controls">
+                        <button id="prevBtn">&#8592;</button>
+                        <span id="modalIndex"></span>
+                        <button id="nextBtn">&#8594;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-column">
+                <div class="footer-logo">
+                    <img src="logo.svg" alt="ImageFinder Logo">
+                </div>
+                <p class="footer-tagline">
+                    We have images that capture every mood and inspire every vision.
+                    From breathtaking landscapes to vibrant portraits.
+                </p>
+                <div class="footer-icons">
+                    <img src="social.svg" alt="Icons">
+                </div>
+            </div>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>COMPANY</h3>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Works</a></li>
+                        <li><a href="#">Career</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>HELP</h3>
+                    <ul>
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Delivery Details</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>FAQ</h3>
+                    <ul>
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">Manage Deliveries</a></li>
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="#">Payments</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>RESOURCES</h3>
+                    <ul>
+                        <li><a href="#">Free eBooks</a></li>
+                        <li><a href="#">Development Tutorial</a></li>
+                        <li><a href="#">How to - Blog</a></li>
+                        <li><a href="#">Youtube Playlist</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>Medown gallery © 2009-2025, All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>
