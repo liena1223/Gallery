@@ -1,38 +1,22 @@
+import { setupModal } from './modal.js';
+
+const UNSPLASH_ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
+const API_URL = 'https://api.unsplash.com/search/photos';
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('searchForm');
     const input = document.getElementById('searchInput');
     const errorMessage = document.getElementById('errorMessage');
     const gallery = document.getElementById('gallery');
-
-    const modal = document.createElement('div');
-    modal.className = 'modal hidden';
-    modal.innerHTML = `
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <button class="modal-prev">&#10094;</button>
-            <img class="modal-image" src="" alt="">
-            <button class="modal-next">&#10095;</button>
-        </div>
-    `;
-    document.body.appendChild(modal);
-
-    const modalImg = modal.querySelector('.modal-image');
-    const modalClose = modal.querySelector('.modal-close');
-    const modalOverlay = modal.querySelector('.modal-overlay');
-    const modalPrev = modal.querySelector('.modal-prev');
-    const modalNext = modal.querySelector('.modal-next');
-
     const regex = /^[\wа-яА-ЯёЁ0-9 !$&*\-=^`|~#%' +/?_{}]{2,30}$/i;
-    const UNSPLASH_ACCESS_KEY = '4BhH6aovDpv84FFGv_p1vREzcXmcZQf3zRkCy2s9Ovs';
-    const API_URL = 'https://api.unsplash.com/search/photos';
 
     let currentQuery = 'природа';
     let currentPage = 1;
     const perPage = 30;
     let isLoading = false;
     let imagesList = [];
-    let currentIndex = 0;
+
+    const modal = setupModal();
 
     async function fetchImages(query, page = 1) {
         isLoading = true;
@@ -53,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             imagesList.push(...data.results);
             renderImages(data.results);
+            modal.setImages(imagesList);
         } catch (error) {
             gallery.innerHTML += `<p class="error-message">Ошибка загрузки: ${error.message}</p>`;
         } finally {
@@ -106,43 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = e.target.closest('.card');
         if (!card) return;
 
-        currentIndex = parseInt(card.dataset.index);
-        showModal(currentIndex);
+        const index = parseInt(card.dataset.index);
+        modal.open(index);
     });
-
-    modalClose.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'ArrowLeft') showPrev();
-    });
-
-    modalNext.addEventListener('click', showNext);
-    modalPrev.addEventListener('click', showPrev);
-
-    function showModal(index) {
-        modal.classList.remove('hidden');
-        document.body.classList.add('modal-open');
-        modalImg.src = imagesList[index].urls.regular;
-        modalImg.alt = imagesList[index].alt_description || '';
-    }
-
-    function closeModal() {
-        modal.classList.add('hidden');
-        document.body.classList.remove('modal-open');
-        modalImg.src = '';
-    }
-
-    function showNext() {
-        currentIndex = (currentIndex + 1) % imagesList.length;
-        showModal(currentIndex);
-    }
-
-    function showPrev() {
-        currentIndex = (currentIndex - 1 + imagesList.length) % imagesList.length;
-        showModal(currentIndex);
-    }
 
     fetchImages(currentQuery, currentPage);
 });
