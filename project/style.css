@@ -92,10 +92,13 @@ h1 {
 }
 
 .error-message {
+    min-height: 1em;
     color: red;
     font-size: 0.9rem;
-    margin-top: 4px;
+    margin-top: 8px;
+    transition: opacity 0.3s;
 }
+
 
 #gallery {
     display: grid;
