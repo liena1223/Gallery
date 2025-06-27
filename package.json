@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "stylelint \"**/*.css\" --fix"
+    "lint": "stylelint \"**/*.css\" --fix",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,7 @@
     "stylelint-config-standard": "^38.0.0"
   },
   "dependencies": {
-    "eslint-plugin-prettier": "^5.5.0"
+    "eslint-plugin-prettier": "^5.5.0",
+    "vite": "^6.3.5"
   }
 }
