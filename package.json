@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d ."
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/liena1223/Gallery/issues"
   },
-  "homepage": "https://github.com/liena1223/Gallery#readme",
+  "homepage": "https://github.com/liena1223/Gallery",
   "devDependencies": {
     "@eslint/js": "^9.29.0",
     "@html-eslint/eslint-plugin": "^0.41.0",
