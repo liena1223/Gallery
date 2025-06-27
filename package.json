@@ -7,7 +7,8 @@
     "lint": "stylelint \"**/*.css\" --fix",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d ."
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "@html-eslint/parser": "^0.41.0",
     "@stylistic/eslint-plugin": "^4.4.1",
     "eslint": "^9.29.0",
+    "gh-pages": "^6.3.0",
     "globals": "^16.2.0",
     "stylelint": "^16.20.0",
     "stylelint-config-standard": "^38.0.0"
