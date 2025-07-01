@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery - Search and view images</title>
+    <link rel="icon" href="/Gallery/assets/android-chrome-512x512-Ds8EsbLR.png" type="image/x-icon" />
+  <script type="module" crossorigin src="/Gallery/assets/index-DLytLAMi.js"></script>
+  <link rel="stylesheet" crossorigin href="/Gallery/assets/index-HEN7RItm.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="/Gallery/assets/logo-DnuSEuLS.svg" alt="ImageFinder Logo" />
+            </div>
+            <div class="header-title">
+                Gallery
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>Let's Find Some <span class="orange">Images</span> Here!</h1>
+
+        <form class="search-form">
+            <input type="text" class="search-form__input js-search-input" placeholder="Search High Resolution Images" />
+            <button type="submit" class="search-form__button">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20x='0px'%20y='0px'%20width='30'%20height='30'%20viewBox='0%200%2030%2030'%3e%3cpath%20d='M%2013%203%20C%207.4889971%203%203%207.4889971%203%2013%20C%203%2018.511003%207.4889971%2023%2013%2023%20C%2015.396508%2023%2017.597385%2022.148986%2019.322266%2020.736328%20L%2025.292969%2026.707031%20A%201.0001%201.0001%200%201%200%2026.707031%2025.292969%20L%2020.736328%2019.322266%20C%2022.148986%2017.597385%2023%2015.396508%2023%2013%20C%2023%207.4889971%2018.511003%203%2013%203%20z%20M%2013%205%20C%2017.430123%205%2021%208.5698774%2021%2013%20C%2021%2017.430123%2017.430123%2021%2013%2021%20C%208.5698774%2021%205%2017.430123%205%2013%20C%205%208.5698774%208.5698774%205%2013%205%20z'%3e%3c/path%3e%3c/svg%3e" alt="search icon" />
+            </button>
+        </form>
+
+        <p class="search-form__error-message error-message js-error-message"></p>
+
+        <div class="gallery js-gallery"></div>
+
+        <div class="loader hidden js-loader"></div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-column">
+                <div class="footer-logo">
+                    <img src="/Gallery/assets/logo-DnuSEuLS.svg" alt="ImageFinder Logo" />
+                </div>
+                <p class="footer-tagline">
+                    We have images that capture every mood and inspire every vision.
+                    From breathtaking landscapes to vibrant portraits.
+                </p>
+                <div class="footer-icons">
+                    <img src="/Gallery/assets/social-B5jaiqve.svg" alt="Icons" />
+                </div>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>COMPANY</h3>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Works</a></li>
+                        <li><a href="#">Career</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>HELP</h3>
+                    <ul>
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Delivery Details</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>FAQ</h3>
+                    <ul>
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">Manage Deliveries</a></li>
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="#">Payments</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>RESOURCES</h3>
+                    <ul>
+                        <li><a href="#">Free eBooks</a></li>
+                        <li><a href="#">Development Tutorial</a></li>
+                        <li><a href="#">How to - Blog</a></li>
+                        <li><a href="#">Youtube Playlist</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>Medown gallery © 2009–2025, All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>
