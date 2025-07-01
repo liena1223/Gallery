@@ -5,10 +5,10 @@ import { handleScroll } from './handlers/scrollHandler.js';
 import { handleCardClick } from './handlers/cardClickHandler.js';
 
 const form = document.querySelector('.search-form');
-const input = document.querySelector('.search-input');
-const errorMessage = document.querySelector('.error-message');
-const gallery = document.querySelector('.gallery');
-const loader = document.querySelector('.loader');
+const input = document.querySelector('.js-search-input');
+const errorMessage = document.querySelector('.js-error-message');
+const gallery = document.querySelector('.js-gallery');
+const loader = document.querySelector('.js-loader');
 
 if (!form || !input || !errorMessage || !gallery || !loader) {
     throw new Error('Missing essential DOM elements');

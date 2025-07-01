@@ -2,20 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Gallery - Search and view images</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="images/android-chrome-512x512.png" type="image/x-icon" />
     <script type="module" src="main.js"></script>
-
 </head>
 
 <body>
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="images/logo.svg" alt="ImageFinder Logo">
+                <img src="images/logo.svg" alt="ImageFinder Logo" />
             </div>
             <div class="header-title">
                 Gallery
@@ -25,34 +24,19 @@
 
     <main>
         <h1>Let's Find Some <span class="orange">Images</span> Here!</h1>
-        <form id="searchForm" class="search-form">
-            <input type="text" id="searchInput" placeholder="Search High Resolution Images" class="search-input" />
-            <button type="submit" class="search-button">
-                <img src="images/icon.svg" alt="search icon">
+
+        <form class="search-form">
+            <input type="text" class="search-form__input js-search-input" placeholder="Search High Resolution Images" />
+            <button type="submit" class="search-form__button">
+                <img src="images/icon.svg" alt="search icon" />
             </button>
         </form>
-        <p id="errorMessage" class="error-message"></p>
 
-        <div class="gallery" id="gallery"></div>
+        <p class="search-form__error-message error-message js-error-message"></p>
 
-        <div id="loader" class="loader hidden"></div>
+        <div class="gallery js-gallery"></div>
 
-        <div id="modal" class="modal hidden">
-            <div class="modal-overlay" id="modalOverlay"></div>
-            <div class="modal-content">
-                <button class="modal-close" id="modalClose">&times;</button>
-                <img id="modalImage" src="" alt="">
-                <div class="modal-info">
-                    <span id="modalTitle"></span>
-                    <div class="modal-controls">
-                        <button id="prevBtn">&#8592;</button>
-                        <span id="modalIndex"></span>
-                        <button id="nextBtn">&#8594;</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <div class="loader hidden js-loader"></div>
 
     </main>
 
@@ -60,16 +44,17 @@
         <div class="footer-content">
             <div class="footer-logo-column">
                 <div class="footer-logo">
-                    <img src="images/logo.svg" alt="ImageFinder Logo">
+                    <img src="images/logo.svg" alt="ImageFinder Logo" />
                 </div>
                 <p class="footer-tagline">
                     We have images that capture every mood and inspire every vision.
                     From breathtaking landscapes to vibrant portraits.
                 </p>
                 <div class="footer-icons">
-                    <img src="images/social.svg" alt="Icons">
+                    <img src="images/social.svg" alt="Icons" />
                 </div>
             </div>
+
             <div class="footer-columns">
                 <div class="footer-column">
                     <h3>COMPANY</h3>
@@ -114,7 +99,7 @@
         </div>
 
         <div class="footer-copyright">
-            <p>Medown gallery © 2009-2025, All Rights Reserved</p>
+            <p>Medown gallery © 2009–2025, All Rights Reserved</p>
         </div>
     </footer>
 </body>
