@@ -47,17 +47,39 @@ export function setupModal(state) {
     const modalPrev = modal.querySelector('.modal-prev');
     const modalNext = modal.querySelector('.modal-next');
 
-    modalClose.addEventListener('click', () => closeModal(modal, modalImg));
-    modalOverlay.addEventListener('click', () => closeModal(modal, modalImg));
-
     document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('hidden')) return;
         if (e.key === 'Escape') closeModal(modal, modalImg);
         if (e.key === 'ArrowRight') showNext(state, modal, modalImg);
         if (e.key === 'ArrowLeft') showPrev(state, modal, modalImg);
     });
 
+    modalClose.addEventListener('click', () => closeModal(modal, modalImg));
+    modalOverlay.addEventListener('click', () => closeModal(modal, modalImg));
     modalNext.addEventListener('click', () => showNext(state, modal, modalImg));
     modalPrev.addEventListener('click', () => showPrev(state, modal, modalImg));
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    modal.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    modal.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    });
+
+    function handleSwipeGesture() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+            showNext(state, modal, modalImg);
+        }
+        if (touchEndX > touchStartX + swipeThreshold) {
+            showPrev(state, modal, modalImg);
+        }
+    }
 
     return {
         setImages(imgArray) {

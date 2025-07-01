@@ -375,4 +375,32 @@ footer {
     .search-form {
         padding: 0 var(--spacing-md);
     }
+
+    .modal-content {
+        max-width: 90vw;
+        max-height: 60vh;
+    }
+
+    .modal-image {
+        max-height: 50vh;
+    }
+
+    .modal-prev,
+    .modal-next {
+        top: auto;
+        bottom: 10px;
+        transform: none;
+        background-color: var(--color-primary);
+        font-size: 24px;
+        padding: 6px;
+    }
+
+    .modal-prev {
+        left: 20px;
+    }
+
+    .modal-next {
+        right: 20px;
+    }
+
 }
