@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage = document.getElementById('errorMessage');
     const gallery = document.getElementById('gallery');
     const regex = /^[\wа-яА-ЯёЁ0-9 !$&*\-=^`|~#%' +/?_{}]{2,30}$/i;
+    const loader = document.getElementById('loader');
+
 
     let currentQuery = 'природа';
     let currentPage = 1;
@@ -20,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchImages(query, page = 1) {
         isLoading = true;
+        loader.classList.remove('hidden');
+
         try {
             const response = await fetch(`${API_URL}?query=${encodeURIComponent(query)}&page=${page}&per_page=${perPage}&orientation=squarish`, {
                 headers: {
@@ -41,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             gallery.innerHTML += `<p class="error-message">Ошибка загрузки: ${error.message}</p>`;
         } finally {
+            loader.classList.add('hidden');
             isLoading = false;
         }
     }
@@ -68,10 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!regex.test(rawValue)) {
             errorMessage.textContent = 'Введите от 2 до 30 допустимых символов.';
+            errorMessage.classList.add('visible');
             return;
         }
 
         errorMessage.textContent = '';
+        errorMessage.classList.remove('visible');
         currentQuery = rawValue;
         currentPage = 1;
         fetchImages(currentQuery, currentPage);

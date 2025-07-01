@@ -34,6 +34,26 @@ header {
     user-select: none;
 }
 
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #e67e22;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 0.8s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
 main {
     flex: 1;
     padding: 2rem 1rem;
@@ -92,13 +112,17 @@ h1 {
 }
 
 .error-message {
-    min-height: 1em;
-    color: red;
+    min-height: 30px;
+    margin-top: 3px;
     font-size: 0.9rem;
-    margin-top: 8px;
-    transition: opacity 0.3s;
+    color: red;
+    transition: opacity 0.3s ease;
+    opacity: 0;
 }
 
+.error-message.visible {
+    opacity: 1;
+}
 
 #gallery {
     display: grid;
@@ -115,6 +139,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 2px 10px #0000001a;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .card img {

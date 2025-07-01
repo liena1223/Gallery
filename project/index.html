@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image</title>
+    <title>Image Gallery - Search and view images</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/android-chrome-512x512.png" type="image/x-icon" />
     <script type="module" src="main.js"></script>
 
 </head>
@@ -33,6 +34,8 @@
         <p id="errorMessage" class="error-message"></p>
 
         <div class="gallery" id="gallery"></div>
+
+        <div id="loader" class="loader hidden"></div>
 
         <div id="modal" class="modal hidden">
             <div class="modal-overlay" id="modalOverlay"></div>
