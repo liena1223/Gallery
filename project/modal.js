@@ -1,15 +1,44 @@
-export function setupModal() {
+function showModal(state, modal, modalImg, index) {
+    if (!state.images[index]) return;
+
+    modal.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+
+    modalImg.src = state.images[index].urls.regular;
+    modalImg.alt = state.images[index].alt_description || '';
+
+    state.currentIndex = index;
+}
+
+function closeModal(modal, modalImg) {
+    modal.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+    modalImg.src = '';
+}
+
+function showNext(state, modal, modalImg) {
+    state.currentIndex = (state.currentIndex + 1) % state.images.length;
+    showModal(state, modal, modalImg, state.currentIndex);
+}
+
+function showPrev(state, modal, modalImg) {
+    state.currentIndex = (state.currentIndex - 1 + state.images.length) % state.images.length;
+    showModal(state, modal, modalImg, state.currentIndex);
+}
+
+export function setupModal(state) {
     const modal = document.createElement('div');
     modal.className = 'modal hidden';
     modal.innerHTML = `
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <button class="modal-prev">&#10094;</button>
-            <img class="modal-image" src="" alt="">
-            <button class="modal-next">&#10095;</button>
-        </div>
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <button class="modal-prev">&#10094;</button>
+        <img class="modal-image" src="" alt="">
+        <button class="modal-next">&#10095;</button>
+      </div>
     `;
+
     document.body.appendChild(modal);
 
     const modalImg = modal.querySelector('.modal-image');
@@ -18,50 +47,25 @@ export function setupModal() {
     const modalPrev = modal.querySelector('.modal-prev');
     const modalNext = modal.querySelector('.modal-next');
 
-    let images = [];
-    let index = 0;
+    modalClose.addEventListener('click', () => closeModal(modal, modalImg));
+    modalOverlay.addEventListener('click', () => closeModal(modal, modalImg));
 
-    function showModal(i) {
-        modal.classList.remove('hidden');
-        document.body.classList.add('modal-open');
-        modalImg.src = images[i].urls.regular;
-        modalImg.alt = images[i].alt_description || '';
-        index = i;
-    }
-
-    function closeModal() {
-        modal.classList.add('hidden');
-        document.body.classList.remove('modal-open');
-        modalImg.src = '';
-    }
-
-    function showNext() {
-        index = (index + 1) % images.length;
-        showModal(index);
-    }
-
-    function showPrev() {
-        index = (index - 1 + images.length) % images.length;
-        showModal(index);
-    }
-
-    modalClose.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'Escape') closeModal(modal, modalImg);
+        if (e.key === 'ArrowRight') showNext(state, modal, modalImg);
+        if (e.key === 'ArrowLeft') showPrev(state, modal, modalImg);
     });
 
-    modalNext.addEventListener('click', showNext);
-    modalPrev.addEventListener('click', showPrev);
+    modalNext.addEventListener('click', () => showNext(state, modal, modalImg));
+    modalPrev.addEventListener('click', () => showPrev(state, modal, modalImg));
 
     return {
         setImages(imgArray) {
-            images = imgArray;
+            if (!Array.isArray(imgArray)) throw new Error('setImages expects array');
+            state.images = imgArray;
         },
         open(i) {
-            showModal(i);
-        }
+            showModal(state, modal, modalImg, i);
+        },
     };
 }
